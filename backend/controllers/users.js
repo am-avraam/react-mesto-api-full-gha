@@ -2,6 +2,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 const { customErrors, methodCodes } = require('../constants');
+const { JWT_SECRET } = require('../config');
 
 const updateParams = {
   new: true, // обработчик then получит на вход обновлённую запись
@@ -35,7 +36,7 @@ module.exports.login = (req, res, next) => {
     .then((user) => {
       const token = jwt.sign(
         { _id: user._id },
-        'vashe-mesto-vozle-backenda',
+        JWT_SECRET,
         { expiresIn: '7d' },
       );
 
