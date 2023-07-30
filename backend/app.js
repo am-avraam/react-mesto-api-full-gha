@@ -3,12 +3,13 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
-const { createUser, login } = require('backend/controllers/users');
-const auth = require('backend/middlewares/auth');
-const { signupValidation, loginValidation } = require('backend/middlewares/validation');
-const { customErrors } = require('backend/constants');
-const errorHandler = require('backend/middlewares/errorHandler');
-const { requestLogger, errorLogger } = require('backend/middlewares/logger');
+const { createUser, login } = require('./controllers/users');
+const auth = require('./middlewares/auth');
+const { signupValidation, loginValidation } = require('./middlewares/validation');
+const { customErrors } = require('./constants');
+const errorHandler = require('./middlewares/errorHandler');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
+require('dotenv').config();
 
 const { PORT = 3000, BASE_PATH } = process.env;
 
@@ -37,8 +38,8 @@ app.post('/signup', signupValidation, createUser);
 
 app.use(auth);
 
-app.use('/users', require('backend/routes/users'));
-app.use('/cards', require('backend/routes/cards'));
+app.use('/users', require('./routes/users'));
+app.use('/cards', require('./routes/cards'));
 
 app.use(errorLogger);
 

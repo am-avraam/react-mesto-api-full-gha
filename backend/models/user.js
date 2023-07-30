@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const validator = require('validator');
-const { customErrors } = require('backend/constants');
+const { customErrors } = require('../constants');
 
 const userSchema = new mongoose.Schema(
   {

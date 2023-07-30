@@ -1,4 +1,4 @@
-const { methodCodes } = require('backend/constants');
+const { methodCodes } = require('../constants');
 
 // eslint-disable-next-line no-unused-vars
 module.exports = (err, req, res, next) => {

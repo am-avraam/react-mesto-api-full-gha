@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const User = require('backend/models/user');
-const { customErrors, methodCodes } = require('backend/constants');
+const User = require('../models/user');
+const { customErrors, methodCodes } = require('../constants');
 
 const updateParams = {
   new: true, // обработчик then получит на вход обновлённую запись

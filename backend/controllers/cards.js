@@ -1,6 +1,6 @@
-const Card = require('backend/models/card');
-const { customErrors } = require('backend/constants');
-const { methodCodes } = require('backend/constants');
+const Card = require('../models/card');
+const { customErrors } = require('../constants');
+const { methodCodes } = require('../constants');
 
 module.exports.createCard = (req, res, next) => {
   const { name, link } = req.body;

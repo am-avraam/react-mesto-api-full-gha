@@ -1,5 +1,7 @@
 const jwt = require('jsonwebtoken');
-const { customErrors } = require('backend/constants');
+const { customErrors } = require('../constants');
+const { JWT_SECRET } = require('../config');
+
 // eslint-disable-next-line consistent-return
 module.exports = (req, res, next) => {
   const token = req.cookies.jwt;
@@ -10,7 +12,7 @@ module.exports = (req, res, next) => {
 
   let payload;
   try {
-    payload = jwt.verify(token, 'vashe-mesto-vozle-backenda');
+    payload = jwt.verify(token, JWT_SECRET);
   } catch (err) {
     throw new customErrors.AuthError('Необходима авторизация');
   }

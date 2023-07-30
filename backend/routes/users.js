@@ -1,8 +1,8 @@
 const router = require('express').Router();
 const {
   getUser, getUsers, patchUser, patchUsersAvatar, getSelf,
-} = require('backend/controllers/users');
-const { searchValidation, patchUserValidation } = require('backend/middlewares/validation');
+} = require('../controllers/users');
+const { searchValidation, patchUserValidation } = require('../middlewares/validation');
 
 router.get('/', getUsers);
 router.get('/me', getSelf);
