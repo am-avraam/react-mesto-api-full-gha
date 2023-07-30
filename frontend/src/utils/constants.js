@@ -7,18 +7,25 @@ export const validationSettings = {
   errorClass: 'popup__input-error_active',
 }
 
+
+const jwt = localStorage.getItem("jwt");
+
 export const apiConfig = {
-  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-64',
+  baseUrl: 'https://amavraam.nomoredomains.sbs/api',
   headers: {
-    authorization: '33fbf74b-a805-4063-8711-2b52c1f91b13',
+    // authorization: '33fbf74b-a805-4063-8711-2b52c1f91b13',
+    Authorization: `Bearer ${jwt}`,
+    Accept: "application/json",
     'Content-Type': 'application/json',
+
   },
 }
 
 export const authApiConfig = {
-  baseUrl: 'https://auth.nomoreparties.co',
+  baseUrl: 'https://amavraam.nomoredomains.sbs/api',
   headers: {
     'Content-Type': 'application/json',
+    Accept: "application/json",
   },
 }
 

@@ -45,8 +45,9 @@ class Api {
     //
     // const {data: {email}} = await this._getResponseData(response)
     // return email
-    const {data: {email}} = await this._getResponseData(response)
-    return email
+    const data = await this._getResponseData(response)
+
+    return data
   }
 }
 

@@ -14,24 +14,24 @@ class Api {
     return res.json()
   }
 
-
-  async getUser() {
-    const response = await fetch(this._baseUrl + '/users/me', {
-      headers: this._headers,
-    })
-
-    return this._getResponseData(response)
+  _getHeaders() {
+    const jwt = localStorage.getItem('jwt');
+    return {
+      Authorization: `Bearer ${jwt}`,
+      ...this._headers,
+    };
   }
+
   async getUser() {
     const response = await fetch(this._baseUrl + '/users/me', {
-      headers: this._headers,
+      headers: this._getHeaders(),
     })
 
     return this._getResponseData(response)
   }
 
   async getInitialCards() {
-    const response = await fetch(this._baseUrl + '/cards', { headers: this._headers })
+    const response = await fetch(this._baseUrl + '/cards', { headers: this._getHeaders() })
 
     return this._getResponseData(response)
   }
@@ -39,7 +39,7 @@ class Api {
   async postCard(data) {
     const response = await fetch(this._baseUrl + '/cards', {
       method: 'POST',
-      headers: this._headers,
+      headers: this._getHeaders(),
       body: JSON.stringify(data),
     })
 
@@ -49,7 +49,7 @@ class Api {
   patchUser = async (newInfo) => {
     const response = await fetch(this._baseUrl + '/users/me', {
       method: 'PATCH',
-      headers: this._headers,
+      headers: this._getHeaders(),
       body: JSON.stringify(newInfo),
     })
 
@@ -59,7 +59,7 @@ class Api {
   deleteCard = async (cardId) => {
     const response = await fetch(this._baseUrl + `/cards/${cardId}`, {
       method: 'DELETE',
-      headers: this._headers,
+      headers: this._getHeaders(),
     })
 
     return this._getResponseData(response)
@@ -70,7 +70,7 @@ class Api {
   changeLikeCardStatus = async(cardId, status) => {
     const response = await fetch(this._baseUrl + `/cards/${cardId}/likes`, {
       method: `${status? 'PUT': 'DELETE'}`,
-      headers: this._headers,
+      headers: this._getHeaders(),
     })
     return this._getResponseData(response)
   }
@@ -78,7 +78,7 @@ class Api {
   async changeAvatar(src) {
     const response = await fetch(this._baseUrl + '/users/me/avatar', {
       method: 'PATCH',
-      headers: this._headers,
+      headers: this._getHeaders(),
       body: JSON.stringify({ avatar: src }),
     })
 

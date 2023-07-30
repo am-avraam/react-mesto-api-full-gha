@@ -38,13 +38,14 @@ export function App() {
 
     useEffect(() => {
       function handleTokenCheck() {
+
         const token = localStorage.getItem('token')
         if (token) {
           authApi.checkToken(token)
-            .then((email) => {
-            if (email) {
+            .then((data) => {
+            if (data.email) {
               setLoggedIn(true)
-              setCurrentEmail(email)
+              setCurrentEmail(data.email)
               navigate('/', {replace: true})
             }
           })
@@ -53,21 +54,22 @@ export function App() {
       }
 
       handleTokenCheck()
-    }, [navigate])
+    }, [navigate, loggedIn])
 
     useEffect(() => {
+      if (loggedIn)
         api.getInitialCards()
             .then((initialCards) => {
             setCards(initialCards)
         })
             .catch((err) => console.log(`Ошибка.....: ${err}`))
-    }, [])
+    }, [loggedIn])
 
     useEffect(() => {
         api.getUser()
             .then(user => {setCurrentUser(user)})
             .catch((err) => console.log(`Ошибка.....: ${err}`))
-    }, [])
+    }, [loggedIn])
 
 
 
@@ -135,6 +137,7 @@ export function App() {
     function handleAuthorization(email, password) {
       return authApi.authorize(email, password)
         .then(token => {
+          console.log(token)
           if (token) {
             handleLogin(true)
             setCurrentEmail(email)
