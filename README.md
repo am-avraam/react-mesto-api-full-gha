@@ -7,7 +7,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 84.252.141.73
+IP 84.252.141.73
 
 Frontend https://amavraam.nomoredomains.sbs
 
