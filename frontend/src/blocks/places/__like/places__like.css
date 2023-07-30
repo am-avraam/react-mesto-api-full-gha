@@ -1,0 +1,23 @@
+.places__like {
+  background: url('/src/images/places/like.svg') no-repeat;
+  width: 22px;
+  height: 19px;
+  text-decoration: none;
+  border: none;
+  align-self: center;
+  cursor: pointer;
+}
+
+.places__like:hover {
+  opacity: 0.6;
+}
+
+.places__like:active {
+  opacity: 1;
+  background: url('/src/images/places/activeLike.png') no-repeat;
+}
+
+.places__like_state_active {
+  opacity: 1;
+  background: url('/src/images/places/activeLike.png') no-repeat;
+}

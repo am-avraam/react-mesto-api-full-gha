@@ -1,0 +1,8 @@
+.popup__button_inactive {
+  color: rgb(184, 184, 184);
+  background: rgb(237, 237, 237);
+  pointer-events: none;
+  user-select: none;
+  border: 1px solid rgba(0, 0, 0, 0.2) !important;
+  border-radius: 2px;
+}

@@ -1,0 +1,15 @@
+.popup__button_close-overlook {
+  position: absolute;
+  top: -40px;
+  right: -40px;
+}
+
+@media screen and (max-width: 890px) {
+  .popup__button_close-overlook {
+    right: 0;
+    top: 0;
+    position: relative;
+    margin-bottom: 16px;
+    align-self: end;
+  }
+}

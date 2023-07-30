@@ -1,0 +1,11 @@
+.profile__edit {
+  opacity: 0;
+  transition: opacity .5s;
+  position: absolute;
+  width: 26px;
+  height: 26px;
+}
+
+.profile__avatar:hover + .profile__edit {
+  opacity: 1;
+}

@@ -1,0 +1,15 @@
+.profile__avatar-wrapper {
+  position: relative;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  margin-right: 30px;
+  align-items: center;
+}
+
+@media screen and (max-width: 890px) {
+
+  .profile__avatar-wrapper{
+    margin-right: 0;
+  }
+}

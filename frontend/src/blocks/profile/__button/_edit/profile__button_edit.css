@@ -1,0 +1,22 @@
+.profile__button_edit {
+  background: url('/src/images/profile/EditButton.svg') no-repeat;
+  height: 24px;
+  width: 24px;
+  align-self: center;
+  top: -3px;
+  position: relative;
+  border: none;
+  margin-left: 18px;
+}
+
+@media screen and (max-width: 890px) {
+
+  .profile__button_edit {
+    position: relative;
+    top: -57px;
+    left: 105px;
+    width: 18px;
+    height: 18px;
+    background-size: contain;    
+  }
+}

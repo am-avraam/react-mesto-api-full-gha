@@ -1,0 +1,13 @@
+export {EditProfilePopup} from "./EditProfilePopup";
+export {AddPlacePopup} from './AddPlacePopup'
+export {Card} from './Card'
+export {EditAvatarPopup} from './EditAvatarPopup'
+export {Footer} from './Footer'
+export {Header} from './Header'
+export {ImagePopup} from './ImagePopup'
+export {Login} from './Login'
+export {Main} from './Main'
+export {PopupWithForm} from './PopupWithForm'
+export {ProtectedRouteElement as ProtectedRoute} from './ProtectedRoute'
+export {Register} from './Register'
+export {App} from './App'

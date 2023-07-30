@@ -1,0 +1,15 @@
+.body {
+  background: black;
+}
+
+.root {
+  margin: 0;
+  padding: 0;
+  min-width: 320px;
+  background: black;
+}
+
+.root:has(.popup_overlook.popup_opened) {
+  height: 100vh;
+  overflow-y: hidden;
+}

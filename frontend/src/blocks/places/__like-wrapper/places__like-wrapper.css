@@ -1,0 +1,6 @@
+.places__like-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  row-gap: 3px;
+}

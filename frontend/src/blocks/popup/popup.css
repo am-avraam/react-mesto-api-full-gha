@@ -1,0 +1,45 @@
+.popup {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s linear;
+  position: absolute;
+}
+
+.popup * {
+box-sizing: border-box;
+}
+
+.popup::after {
+    content: '';
+    display: block;
+    position: fixed;
+    top: 0;
+    background-color: black;
+    opacity: 0.5;
+    width: 2000px;
+    height: 2000px;
+    z-index: 2;
+}
+
+.popup.popup_overlook::after {
+  opacity: 0.9;
+
+}
+
+@media screen and (max-width: 890px) {
+  .popup {
+    max-width: 100%;
+  }
+
+  .popup::after {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+
+.popup-infotooltip__icon {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto;
+}

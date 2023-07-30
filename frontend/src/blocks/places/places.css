@@ -1,0 +1,12 @@
+.places {
+  display: flex;
+  margin-top: 47.25px;
+  margin-bottom: 67px;
+}
+
+@media screen and (max-width: 890px) {
+  .places {
+    margin-top: 36px;
+    margin-bottom: 48px;
+  }
+}

@@ -1,0 +1,13 @@
+.popup-update .popup__container {
+  height: 272px;
+  padding: 36px;
+}
+
+.popup-update .popup__title {
+  margin-top: 0;
+  margin-bottom: 54px;
+}
+
+.popup__button-update  {
+  margin-top: 10px;
+}

@@ -1,0 +1,8 @@
+.places__overlook {
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  display: block;
+  background-color: inherit;
+}

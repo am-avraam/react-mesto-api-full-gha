@@ -1,0 +1,8 @@
+.places__description {
+  height: 79px;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 21px;
+  padding-right: 21px;
+}
