@@ -5,7 +5,6 @@ import {initFormState} from "utils/constants";
 export const Login = ({onLogin}) => {
 
   const [formValue, setFormValue] = useState(initFormState)
-
   const handleSubmit = (e) => {
     e.preventDefault()
     onLogin(formValue.email, formValue.password)

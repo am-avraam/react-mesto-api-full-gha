@@ -1,6 +1,6 @@
 const ALLOWED_ORIGINS = [
-  'https://amavraam.nomoredomains.sbs',
-  'http://amavraam.nomoredomains.sbs',
+  'https://amik.blin.nomoreparties.co',
+  'http://amik.blin.nomoreparties.co',
   'http://localhost:3000',
 ];
 // Значение для заголовка Access-Control-Allow-Methods по умолчанию (разрешены все типы запросов)

@@ -8,13 +8,12 @@ export const validationSettings = {
 }
 
 
-const jwt = localStorage.getItem("jwt");
+const token = localStorage.getItem("token");
 
 export const apiConfig = {
-  baseUrl: 'https://amavraam.nomoredomains.sbs/api',
+  baseUrl: 'https://api.amik.blin.nomoreparties.co',
   headers: {
-    // authorization: '33fbf74b-a805-4063-8711-2b52c1f91b13',
-    Authorization: `Bearer ${jwt}`,
+    Authorization: `Bearer ${token}`,
     Accept: "application/json",
     'Content-Type': 'application/json',
 
@@ -22,7 +21,7 @@ export const apiConfig = {
 }
 
 export const authApiConfig = {
-  baseUrl: 'https://amavraam.nomoredomains.sbs/api',
+  baseUrl: 'https://api.amik.blin.nomoreparties.co',
   headers: {
     'Content-Type': 'application/json',
     Accept: "application/json",

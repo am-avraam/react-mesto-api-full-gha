@@ -36,40 +36,46 @@ export function App() {
 
   const navigate = useNavigate()
 
+
+
     useEffect(() => {
       function handleTokenCheck() {
 
         const token = localStorage.getItem('token')
         if (token) {
           authApi.checkToken(token)
-            .then((data) => {
-            if (data.email) {
-              setLoggedIn(true)
-              setCurrentEmail(data.email)
-              navigate('/', {replace: true})
-            }
-          })
+            .then(({data}) => {
+              if (data.email) {
+                setLoggedIn(true)
+                setCurrentEmail(data.email)
+                navigate('/', {replace: true})
+              }
+            })
             .catch(err => console.log(`Ошибка.....: ${err}`))
         }
       }
 
       handleTokenCheck()
-    }, [navigate, loggedIn])
+    }, [navigate])
+
+
 
     useEffect(() => {
-      if (loggedIn)
         api.getInitialCards()
-            .then((initialCards) => {
-            setCards(initialCards)
+            .then(({data}) => {
+            setCards(data)
         })
             .catch((err) => console.log(`Ошибка.....: ${err}`))
     }, [loggedIn])
 
     useEffect(() => {
+      // if (loggedIn) {
         api.getUser()
-            .then(user => {setCurrentUser(user)})
+            .then(({data}) => {
+              setCurrentUser(data)})
             .catch((err) => console.log(`Ошибка.....: ${err}`))
-    }, [loggedIn])
+      // }
+    }, [])
 
 
 
@@ -104,8 +110,8 @@ export function App() {
 
     function handleUpdateUser(updatedInfo) {
         api.patchUser(updatedInfo)
-            .then(newUserInfo => {
-                setCurrentUser(newUserInfo)
+            .then(({data}) => {
+                setCurrentUser(data)
                 closeAllPopups()
             })
             .catch((err) => console.log(`Ошибка.....: ${err}`))
@@ -113,8 +119,8 @@ export function App() {
 
     function handleUpdateAvatar(src) {
         api.changeAvatar(src)
-            .then(({avatar}) => {
-                setCurrentUser({...currentUser, avatar: avatar})
+            .then(({data}) => {
+                setCurrentUser({...currentUser, avatar: data.avatar})
                 closeAllPopups()
             })
             .catch((err) => console.log(`Ошибка.....: ${err}`))
@@ -137,7 +143,6 @@ export function App() {
     function handleAuthorization(email, password) {
       return authApi.authorize(email, password)
         .then(token => {
-          console.log(token)
           if (token) {
             handleLogin(true)
             setCurrentEmail(email)
@@ -164,11 +169,11 @@ export function App() {
     }
 
     function handleCardLike(card) {
-        const isLiked = card.likes.some(i => i._id === currentUser._id);
+        const isLiked = card.likes.some(i => i === currentUser._id);
 
         // Отправляем запрос в API и получаем обновлённые данные карточки
         api.changeLikeCardStatus(card._id, !isLiked)
-            .then((newCard) => {
+            .then(({data: newCard}) => {
             setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
         })
             .catch((err) => console.log(`Ошибка.....: ${err}`))
@@ -183,7 +188,7 @@ export function App() {
 
     function handleAddPlaceSubmit(card) {
         api.postCard(card)
-            .then(newCard => {
+            .then(({data: newCard}) => {
                 setCards([newCard, ...cards])
                 closeAllPopups()
             })

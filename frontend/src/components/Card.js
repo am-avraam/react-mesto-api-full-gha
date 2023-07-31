@@ -2,12 +2,11 @@ import React, {useContext} from 'react';
 import {UserContext} from "../contexts/CurrentUserContext";
 
 export const Card = ({card, onCardClick, onCardLike, onCardDelete}) => {
-
 const currentUser = useContext(UserContext)
   // eslint-disable-next-line
     const {name, link, owner, _id, likes} = card
-    const isOwn = owner._id === currentUser._id;
-    const isLiked = likes.some(i => i._id === currentUser._id);
+    const isOwn = owner === currentUser?._id;
+    const isLiked = likes?.some(i => i === currentUser?._id);
 
     const cardLikeButtonClassName = (
         `places__like ${isLiked && 'places__like_state_active'}`
@@ -31,7 +30,7 @@ const currentUser = useContext(UserContext)
                 <p className="places__name">{name}</p>
                 <div className="places__like-wrapper">
                     <button className={cardLikeButtonClassName} onClick={handleLikeClick}></button>
-                    <span className="places__count-like">{likes.length}</span>
+                    <span className="places__count-like">{likes?.length}</span>
                 </div>
             </div>
         </li>
