@@ -7,8 +7,8 @@
 
 ## Ссылки на проект
 
-IP 84.252.141.73
+IP 158.160.72.148
 
-Frontend https://amavraam.nomoredomains.sbs
+Frontend https://amik.blin.nomoreparties.co
 
-Backend https://amavraam.nomoredomains.sbs/api
+Backend https://api.amik.blin.nomoreparties.co
