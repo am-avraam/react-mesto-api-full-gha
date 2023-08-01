@@ -1,11 +1,11 @@
 import {apiConfig} from '../constants'
+
+
 class Api {
   constructor(options) {
     this._baseUrl = options.baseUrl
     this._headers = options.headers
   }
-
-
 
   _getResponseData(res) {
     if (!res.ok) {
@@ -17,21 +17,21 @@ class Api {
   _getHeaders() {
     const token = localStorage.getItem('token');
     return {
-      Authorization: `Bearer ${token}`,
       ...this._headers,
+      Authorization: `Bearer ${token}`,
     };
   }
 
-  async getUser() {
+  async getUser(token) {
     const response = await fetch(this._baseUrl + '/users/me', {
-      headers: this._getHeaders(),
+      headers: {...this._headers, Authorization: `Bearer ${token}`},
     })
 
     return this._getResponseData(response)
   }
 
-  async getInitialCards() {
-    const response = await fetch(this._baseUrl + '/cards', { headers: this._getHeaders() })
+  async getInitialCards(token) {
+    const response = await fetch(this._baseUrl + '/cards', { headers: {...this._headers, Authorization: `Bearer ${token}`} })
 
     return this._getResponseData(response)
   }

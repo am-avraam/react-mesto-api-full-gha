@@ -61,22 +61,21 @@ export function App() {
 
 
     useEffect(() => {
-        api.getInitialCards()
-            .then(({data}) => {
+      const token = localStorage.getItem('token')
+
+      if (token) {
+        api.getUser(token)
+          .then(({data}) => {
+            setCurrentUser(data)})
+          .catch((err) => console.log(`Ошибка.....: ${err}`))
+
+        api.getInitialCards(token)
+          .then(({data}) => {
             setCards(data)
-        })
-            .catch((err) => console.log(`Ошибка.....: ${err}`))
-    }, [loggedIn])
-
-    useEffect(() => {
-      // if (loggedIn) {
-        api.getUser()
-            .then(({data}) => {
-              setCurrentUser(data)})
-            .catch((err) => console.log(`Ошибка.....: ${err}`))
-      // }
-    }, [])
-
+          })
+          .catch((err) => console.log(`Ошибка.....: ${err}`))
+        }
+    }, [loggedIn, currentEmail])
 
 
     function handleRegister(res) {
@@ -148,6 +147,7 @@ export function App() {
             setCurrentEmail(email)
             navigate('/', {replace: true})
             localStorage.setItem('token', token);
+
           } else {
             handleRegister(false)
           }

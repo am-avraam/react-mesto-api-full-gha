@@ -7,13 +7,6 @@ class Api {
   }
 
 
-  _getHeaders() {
-    const token = localStorage.getItem('token');
-    return {
-      Authorization: `Bearer ${token}`,
-      ...this._headers,
-    };
-  }
   _getResponseData(res) {
     // if (!res.ok) {
     //   return Promise.reject(`Ошибка: ${res.status}`)
@@ -24,7 +17,7 @@ class Api {
   async register(email, password) {
     const response = await fetch(this._baseUrl + '/signup', {
       method: 'POST',
-      headers: this._getHeaders(),
+      headers: this._headers,
       body: JSON.stringify({email: email, password: password})
     })
 
@@ -34,7 +27,7 @@ class Api {
   async authorize(email, password) {
     const response = await fetch(this._baseUrl + '/signin', {
       method: 'POST',
-      headers: this._getHeaders(),
+      headers: this._headers,
       body: JSON.stringify({email: email, password: password}),
     })
 
